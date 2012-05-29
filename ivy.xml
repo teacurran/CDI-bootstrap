@@ -40,9 +40,9 @@
 					rev="6.0" conf="provided->default"/>
 		-->
 		<dependency org="org.jboss.spec" name="jboss-javaee6-specs-bom"
-					rev="1.0.1.Final" conf="provided->default"/>
+					rev="2.1.0.Beta1" conf="provided->default"/>
 		<dependency org="org.jboss.spec" name="jboss-javaee-6.0"
-					rev="1.0.0.Final" conf="provided->default"/>
+					rev="2.1.0.Beta1" conf="provided->default"/>
 
 		<!-- Hibernate -->
 		<!--

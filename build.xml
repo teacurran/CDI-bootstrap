@@ -81,7 +81,7 @@
 		ivy.lib from this project is used and no additional user configuration for
 		downloading ivy is required -->
 	<path id="ivy.lib.path">
-		<fileset dir="${lib.tools.dir}" includes="ivy-2.2.0-rc1.jar" />
+		<fileset dir="${lib.tools.dir}" includes="ivy-2.2.0.jar" />
 	</path>
 	<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant"
 		classpathref="ivy.lib.path" />
@@ -228,50 +228,6 @@
     </target>
 
 	<target name="assemble" depends="compile" description="assemble application components but do not compile">
-
-		<!-- Initialize the JPA configuration -->
-		<copy overwrite="true" file="${src.dir}/META-INF/persistence.xml.template"
-			tofile="${src.dir}/META-INF/persistence.xml" />
-
-		<replace file="${src.dir}/META-INF/persistence.xml">
-
-			<replacefilter token="@db.hibernate.show_sql@" value="${db.hibernate.show_sql}" />
-			<replacefilter token="@db.hibernate.format_sql@" value="${db.hibernate.format_sql}" />
-			<replacefilter token="@db.hibernate.generate_statistics@" value="${db.hibernate.generate_statistics}" />
-			<replacefilter token="@db.hibernate.use_sql_comments@" value="${db.hibernate.use_sql_comments}" />
-
-			<replacefilter token="@db.source.localconnection.hbm2ddl@" value="${db.source.localconnection.hbm2ddl}" />
-			<replacefilter token="@db.source.localconnection.schema@" value="${db.source.localconnection.schema}" />
-			<replacefilter token="@db.source.localconnection.dialect@" value="${db.source.localconnection.dialect}" />
-			<replacefilter token="@db.source.localconnection.username@" value="${db.source.localconnection.username}" />
-			<replacefilter token="@db.source.localconnection.password@" value="${db.source.localconnection.password}" />
-
-		</replace>
-
-		<!-- Populate the source resources -->
-		<mkdir dir="${web.web-inf.classes.dir}" />
-		<copy includeemptydirs="false" todir="${web.web-inf.classes.dir}">
-			<fileset dir="${src.dir}">
-				<exclude name="**/*.java" />
-				<exclude name="**/*.template" />
-			</fileset>
-		</copy>
-
-		<!-- Populate the test resources -->
-		<copy includeemptydirs="false" todir="${web.web-inf.classes.dir}">
-			<fileset dir="${src.dir}">
-				<include name="*/**"/>
-				<exclude name="**/*.java" />
-				<exclude name="**/*.template" />
-			</fileset>
-		</copy>
-		<!-- Copy the Seed data sql -->
-		<copy includeemptydirs="false" todir="${web.web-inf.classes.dir}">
-			<fileset dir="${db.dir}">
-				<exclude name="**/*.xml" />
-				<include name="**/*static-data.sql" />
-			</fileset>
-		</copy>
 
 		<!-- Initialize the mode-specific application configuration -->
 		<copy overwrite="true" includeemptydirs="false"
