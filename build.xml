@@ -99,8 +99,7 @@
 	<target name="ivy-resolve" description="resolves dependencies and downloads
 		jars"
 		depends="ivy-setup">
-		<ivy:retrieve type="jar"
-			pattern="${lib.ivy.dir}/[conf]/[artifact]-[revision].[ext]" />
+		<ivy:retrieve sync="true" conf="*" type="jar,bundle" pattern="${lib.ivy.dir}/[conf]/[artifact]-[revision].[ext]"/>
 	</target>
 
 	<!-- generates a report of dependencies -->
